@@ -1,0 +1,16 @@
+flask>=3.0
+pywebview>=5.0
+llama-cpp-python>=0.2.90
+
+# --- Platform notes for pywebview's native webview backend ---
+# Windows: uses Edge WebView2 (usually pre-installed on Win10/11)
+# macOS:   uses WKWebView (built in, may need `pip install pywebview[cocoa]`)
+# Linux:   needs GTK + WebKit2:  sudo apt install python3-gi gir1.2-webkit2-4.1
+#          (or use the qt backend:  pip install pywebview[qt]  + PyQt5)
+
+# --- GPU acceleration for llama-cpp-python ---
+# CPU-only install is what you get from the line above. For GPU offload,
+# reinstall with the backend for your hardware, e.g.:
+#   NVIDIA (CUDA):   CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python --force-reinstall --no-cache-dir
+#   Apple Silicon:   CMAKE_ARGS="-DGGML_METAL=on" pip install llama-cpp-python --force-reinstall --no-cache-dir
+#   AMD (ROCm):      CMAKE_ARGS="-DGGML_HIPBLAS=on" pip install llama-cpp-python --force-reinstall --no-cache-dir
